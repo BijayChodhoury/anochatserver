@@ -1,10 +1,13 @@
 const webSocketsServerPort = 8000;
+const webSocketsServerHost = '0.0.0.0';
 const webSocketServer = require('websocket').server;
 const http = require('http');
 
 // Spinning the http server and the websocket server.
 const server = http.createServer();
-server.listen(webSocketsServerPort);
+server.listen(webSocketsServerPort, webSocketsServerHost, () => {
+  console.log(`server running at http://${webSocketsServerHost}:${webSocketsServerPort}/`);
+});
 console.log('listening on port 8000');
 
 
